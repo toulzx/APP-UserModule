@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">STITP_Module_User</string>
+
+    <string name="hello_login_fragment">Hello login fragment</string>
+    <string name="hello_register_fragment">Hello register fragment</string>
+    <string name="hello_data_fragment">Hello data fragment</string>
+
+    <string name="tv_login_hint">login Page</string>
+    <string name="et_login_id">login id</string>
+    <string name="et_login_password">password</string>
+    <string name="bt_login">login now</string>
+    <string name="tv_login_to_register">have not register?</string>
+
+    <string name="tv_register_hint">register Page</string>
+    <string name="et_register_id">register id</string>
+    <string name="et_register_password">register password</string>
+    <string name="bt_register">register now</string>
+
+    <string name="tv_data_item_time">time</string>
+    <string name="tv_data_item_cupboard">cupboard</string>
+    <string name="tv_data_item_index">cable index</string>
+    <string name="tv_data_item_content">cable content</string>
+
+    <string name="tv_data_username">tou</string>
+    <string name="tv_data_count">online: 998 days</string>
+</resources>
