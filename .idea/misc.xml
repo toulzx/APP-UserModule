@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/drawable/round_button.xml" value="0.27760416666666665" />
         <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/activity_main.xml" value="0.23177083333333334" />
-        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_data.xml" value="0.2" />
-        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_login.xml" value="0.4" />
-        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_register.xml" value="0.264" />
+        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_data.xml" value="0.4" />
+        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_login.xml" value="0.15471698113207547" />
+        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_register.xml" value="0.14385964912280702" />
+        <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/fragment_shot.xml" value="0.26145833333333335" />
         <entry key="..\:/Android/myTry/STITP_Module_User/app/src/main/res/layout/item_data.xml" value="0.4" />
       </map>
     </option>

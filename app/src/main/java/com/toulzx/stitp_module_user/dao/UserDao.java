@@ -27,4 +27,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM USER ORDER BY ID DESC")
     LiveData<List<User>> getAllUsersLive();
+
+    @Query("SELECT * FROM USER WHERE USERNAME =:userName")
+    User getUser(String userName);
 }

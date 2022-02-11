@@ -5,6 +5,29 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#e6a0c4</color>
+    <color name="colorPrimaryDark">#D81B60</color>
+    <color name="colorAccent">#008577</color>
+
+    <color name="MorandiPink">#e6a0c4</color>
+    <color name="MorandiPurple">#c6cdf7</color>
+    <color name="MorandiBrown">#d8a499</color>
+    <color name="MorandiBlue">#7294d4</color>
+
+    <color name="MacaronCyanBlue">#5ec9db</color>
+    <color name="MacaronYellow">#fdc765</color>
+    <color name="MacaronOrange">#f27d51</color>
+    <color name="MacaronPurple">#6462cc</color>
+
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

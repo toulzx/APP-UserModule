@@ -18,6 +18,9 @@
             android:id="@+id/action_loginFragment_to_dataFragment"
             app:destination="@id/dataFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_loginFragment_to_shotFragment"
+            app:destination="@id/shotFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -28,10 +31,29 @@
             android:id="@+id/action_registerFragment_to_dataFragment"
             app:destination="@id/dataFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_registerFragment_to_shotFragment"
+            app:destination="@id/shotFragment" />
     </fragment>
     <fragment
         android:id="@+id/dataFragment"
         android:name="com.toulzx.stitp_module_user.fragment.dataFragment"
         android:label="data"
-        tools:layout="@layout/fragment_data" />
+        tools:layout="@layout/fragment_data" >
+        <action
+            android:id="@+id/action_dataFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/shotFragment"
+        android:name="com.toulzx.stitp_module_user.fragment.ShotFragment"
+        android:label="fragment_shot"
+        tools:layout="@layout/fragment_shot" >
+        <action
+            android:id="@+id/action_shotFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+    </fragment>
 </navigation>

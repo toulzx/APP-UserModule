@@ -75,13 +75,14 @@ public class MyRepository {
 //         new LoadDataByUserIdAsyncTask(dataDao).execute(users);
 //    }
 
-    public List<Data> loadDataByUserName(User...users) {
-        for (User user : users) {
-            selectedDataLive = dataDao.loadDataByUserName(user.getUsername());
-        }
+    public List<Data> loadDataByUserName(String userName) {
+            selectedDataLive = dataDao.loadDataByUserName(userName);
         return selectedDataLive;
     }
 
+    public User getUser(String userName) {
+        return userDao.getUser(userName);
+    }
 
 
     // AsyncTask - User
@@ -224,7 +225,7 @@ public class MyRepository {
         }
     }
 
-    // AsyncTask
+    // AsyncTask, has not used yet
 
     private static class LoadDataByUserIdAsyncTask extends AsyncTask<User, Void, Void> {
         private DataDao dataDao;
