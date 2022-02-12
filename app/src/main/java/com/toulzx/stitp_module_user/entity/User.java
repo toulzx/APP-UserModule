@@ -12,10 +12,14 @@ public class User {
     @ColumnInfo(name = "username")
     private String username;
 
+    @ColumnInfo(name = "password")
+    private String password;
+
     // Constructor
 
-    public User(String username) {
+    public User(String username, String password) {
         this.username = username;
+        this.password = password;
     }
 
     // Getter
@@ -28,6 +32,10 @@ public class User {
         return username;
     }
 
+    public String getPassword(){
+        return password;
+    }
+
     // Setter
 
 
@@ -37,5 +45,9 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

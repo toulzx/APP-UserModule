@@ -5,74 +5,39 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.toulzx.stitp_module_user.MyViewModel;
 import com.toulzx.stitp_module_user.R;
 import com.toulzx.stitp_module_user.adpter.DataAdapter;
 import com.toulzx.stitp_module_user.entity.Data;
-import com.toulzx.stitp_module_user.entity.User;
+import com.toulzx.stitp_module_user.utils.SPHelper;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class dataFragment extends Fragment {
+public class DataFragment extends Fragment {
+    private TextView tvUserName, tvCount ,tvLogout;
     private RecyclerView recyclerView;
+    private FloatingActionButton floatBtn;
 
     private MyViewModel myViewModel;
     private DataAdapter dataAdapter;
 
-    private String[] usersNames = {
-            "tou",
-            "lzx",
-    };
-    private String[] owners = {
-            "tou",
-            "tou",
-            "tou",
-            "lzx",
-            "lzx",
-    };
-    private String[] timeTexts = {
-            "2021-01-01-09-20-41",
-            "2021-02-02-10-30-52",
-            "2021-03-03-11-40-03",
-            "2021-04-04-12-50-14",
-            "2021-05-05-13-00-25",
-    };
-    private String[] cupboardTexts = {
-            "1-21UD",
-            "1TD",
-            "1-1QD",
-            "BD",
-            "ZD",
-    };
-    private String[] cableIndexTexts = {
-            "2",
-            "4",
-            "9",
-            "31",
-            "1",
-    };
-    private String[] cableContentTexts = {
-            "wrong pair",
-            "extra pair",
-            "missing pair",
-            "extra pair",
-            "wrong pair",
-    };
-
-    public dataFragment() {
+    public DataFragment() {
         // Required empty public constructor
     }
 
@@ -86,6 +51,14 @@ public class dataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // bind
+        FragmentActivity activity = requireActivity();
+        tvUserName = activity.findViewById(R.id.tv_data_username);
+        tvCount = activity.findViewById(R.id.tv_data_count);
+        tvLogout = activity.findViewById(R.id.tv_data_logout);
+        floatBtn = activity.findViewById(R.id.floatBtn_data_insert);
+        // initialize
+        tvUserName.setText(SPHelper.getUserName());
         // viewModel
         myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
         // adapter
@@ -95,36 +68,48 @@ public class dataFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         recyclerView.setAdapter(dataAdapter);
         // observer
-        myViewModel.getAllUsersLive().observe(requireActivity(), new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                // if database is empty, initialize database, test needed
-                if (users.size() == 0) {
-                    for (int i = 0; i < usersNames.length; i++) {
-                        myViewModel.insertUser(new User(usersNames[i]));
-                    }
-                }
-            }
-        });
         myViewModel.getAllDataLive().observe(requireActivity(), new Observer<List<Data>>() {
             @Override
             public void onChanged(List<Data> data) {
-                // if database is empty, initialize database, test needed
-                if (data.size() == 0) {
-                    for (int i = 0; i < timeTexts.length; i++) {
-                        myViewModel.insertData(new Data(owners[i], timeTexts[i], cupboardTexts[i], cableIndexTexts[i], cableContentTexts[i]));
-                    }
-                }
                 // if database is updated, notify
                 if (dataAdapter.getItemCount() != data.size()) {
                     dataAdapter.notifyDataSetChanged();
                 }
                 // reset the recyclerView
-                List<Data> selectedData = myViewModel.loadDataByUserName(new User("tou")); // test needed
+                List<Data> selectedData = myViewModel.loadDataByUserName(SPHelper.getUserName());
                 dataAdapter.setDataFromUser(selectedData);
+                // reset the count
+                tvCount.setText("Counts: " + selectedData.size());
+            }
+        });
+        // listener
+        tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set Status and navigate
+                SPHelper.setValue(null, null, null, null, "false");
+                // navigate
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_dataFragment_to_loginFragment);
+            }
+        });
+        floatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // current time
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+                // update database
+                myViewModel.insertData(new Data(
+                        SPHelper.getUserName(),
+                        dateFormat.format(new Date()),
+                        "cbN",
+                        "cI",
+                        "nice pair"
+                ));
             }
         });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

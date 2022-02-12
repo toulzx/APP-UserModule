@@ -54,8 +54,12 @@ public class MyViewModel extends AndroidViewModel {
         myRepository.deleteAllData();
     }
 
-    public List<Data> loadDataByUserName(User...users) {
-        return myRepository.loadDataByUserName(users);
+    public User getUser(String userName) {
+        return myRepository.getUser(userName);
     }
+    public List<Data> loadDataByUserName(String userName) {
+        return myRepository.loadDataByUserName(userName);
+    }
+
 
 }

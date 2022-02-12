@@ -31,7 +31,14 @@
     </fragment>
     <fragment
         android:id="@+id/dataFragment"
-        android:name="com.toulzx.stitp_module_user.fragment.dataFragment"
+        android:name="com.toulzx.stitp_module_user.fragment.DataFragment"
         android:label="data"
-        tools:layout="@layout/fragment_data" />
+        tools:layout="@layout/fragment_data" >
+        <action
+            android:id="@+id/action_dataFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

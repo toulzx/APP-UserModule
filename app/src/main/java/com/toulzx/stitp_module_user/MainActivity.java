@@ -9,6 +9,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
 
+import com.toulzx.stitp_module_user.utils.SPHelper;
+
 public class MainActivity extends AppCompatActivity {
     private NavController navController;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 初始化 SharedPreferences
+        SPHelper.init(getApplication());
     }
 
     @Override
